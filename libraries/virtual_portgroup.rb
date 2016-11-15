@@ -10,36 +10,33 @@ class VmWareVirtualPortgroup < Inspec.resource(1)
 
   example "
     describe virtual_portgroup({datacenter: 'ha-datacenter', host: 'localhost', portgroup: 'VM Network'}) do
-      its('vlanId') { should_not eq 1 }
+      its('vlan') { should_not eq 1 }
     end
   "
 
   # Load the configuration file on initialization
   def initialize(opts)
-    @opts = opts;
+    @opts = opts
   end
 
   # Expose all parameters
-  def method_missing(name)
-    return vlanId[name.to_s]
+  def method_missing(name) # rubocop:disable Style/MethodMissing
+    [name.to_s]
   end
 
-  def vlanId
+  def vlan
     host = get_host(@opts[:datacenter], @opts[:host])
-    unless host.nil?
-      pgroups = host.config.network.portgroup
-      pgroups.each do |group|
-        if group.key.include?(@opts[:portgroup])
-          return group.spec.vlanId
-        end
+    pgroups = host.config.network.portgroup
+    pgroups.each do |group|
+      if group.key.include?(@opts[:portgroup])
+        return group.spec.vlanId
       end
     end
   end
 
   def get_host(dc_name, host_name)
-    begin
       # TODO: this should something like `inspec.vsphere.connection`
-      vim = VSphere.new.connection
+      vim = ESXConnection.new.connection
       dc = vim.serviceInstance.find_datacenter(dc_name)
       hosts = dc.hostFolder.children
       hosts.each do |entity|
@@ -49,11 +46,5 @@ class VmWareVirtualPortgroup < Inspec.resource(1)
           end
         end
       end
-    rescue Exception => e
-      # TODO: proper logging
-      puts e.message
-      puts e.backtrace.inspect
-      nil
-    end
   end
 end
