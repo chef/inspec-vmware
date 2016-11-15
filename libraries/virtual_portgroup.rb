@@ -35,16 +35,16 @@ class VmWareVirtualPortgroup < Inspec.resource(1)
   end
 
   def get_host(dc_name, host_name)
-      # TODO: this should something like `inspec.vsphere.connection`
-      vim = ESXConnection.new.connection
-      dc = vim.serviceInstance.find_datacenter(dc_name)
-      hosts = dc.hostFolder.children
-      hosts.each do |entity|
-        entity.host.each do |host|
-          if host.name == host_name && host.class == RbVmomi::VIM::HostSystem
-            return host
-          end
+  # TODO: this should something like `inspec.vsphere.connection`
+    vim = ESXConnection.new.connection
+    dc = vim.serviceInstance.find_datacenter(dc_name)
+    hosts = dc.hostFolder.children
+    hosts.each do |entity|
+      entity.host.each do |host|
+        if host.name == host_name && host.class == RbVmomi::VIM::HostSystem
+          return host
         end
       end
+    end
   end
 end
