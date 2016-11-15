@@ -35,7 +35,7 @@ class VmWareVirtualPortgroup < Inspec.resource(1)
   end
 
   def get_host(dc_name, host_name)
-  # TODO: this should something like `inspec.vsphere.connection`
+    # TODO: this should something like `inspec.vsphere.connection`
     vim = ESXConnection.new.connection
     dc = vim.serviceInstance.find_datacenter(dc_name)
     hosts = dc.hostFolder.children
