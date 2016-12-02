@@ -14,7 +14,7 @@ class ESXConnection
     end
 
     # Need to escape the string for chars that will cause URI::Parser to fail
-    connection_string_encoded = URI.encode(connection_string)
+    connection_string = URI.encode(connection_string)
 
     connection = URI(connection_string)
     if connection.scheme != 'vsphere' ||
@@ -30,6 +30,7 @@ class ESXConnection
       password: URI.decode(connection.password),
       insecure: true,
     }
+  end
 
   def connection
     return @conn if defined?(@conn)
