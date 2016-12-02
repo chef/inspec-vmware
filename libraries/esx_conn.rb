@@ -6,11 +6,15 @@ class ESXConnection
     require 'rbvmomi'
 
     # INSPEC_ESX_CONN='vsphere://root:vmwarevmware@192.168.10.139'
+    # Windows PowerShell $env:INSPEC_ESX_CONN = 'vsphere://domain\gbright:password@vCenter'
     connection_string = ENV['INSPEC_ESX_CONN']
     if connection_string.nil?
       puts 'Please use vsphere://username:password@host'
       return
     end
+
+    # Need to escape the string for chars that will cause URI::Parser to fail
+    connection_string_encoded = URI.encode(connection_string)
 
     connection = URI(connection_string)
     if connection.scheme != 'vsphere' ||
@@ -22,11 +26,10 @@ class ESXConnection
 
     @conn_opts = {
       host: connection.host,
-      user: connection.user,
-      password: connection.password,
+      user: URI.decode(connection.user),
+      password: URI.decode(connection.password),
       insecure: true,
     }
-  end
 
   def connection
     return @conn if defined?(@conn)
