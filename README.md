@@ -1,10 +1,13 @@
-# InSpec for VmWare
+# InSpec for VMware
 
 ## Roadmap
 
-This repository is the development repository for InSpec for VmWare. Once [RFC Platforms](https://github.com/chef/inspec/issues/1661) is fully implemented in InSpec, this repository is going to be merged into core InSpec.
+This repository is the development repository for InSpec for VMware. Once [RFC Platforms]
+(https://github.com/chef/inspec/issues/1661) is fully implemented in InSpec, this repository 
+is going to be merged into core InSpec.
 
-As of now, vSphere/ESX resources are implemented as an InSpec resource pack. It will ship with the required resources to write your own vSphere tests.
+As of now, vSphere/ESXi resources are implemented as an InSpec resource pack. It will ship with 
+the required resources to write your own vSphere tests.
 
 ```
 ├── README.md - this readme
@@ -20,7 +23,8 @@ To run the profile, use inspec with an environment variable:
 
 ## Use the resources
 
-Since this is a resource pack, it only defines InSpec resources. There are no controls included in this resource pack. To use the resources in your tests do the following.
+Since this is a resource pack, it only defines InSpec resources. There are no controls included 
+in this resource pack. To use the resources in your tests do the following.
 
 ### Adapt the `inspec.yml`
 
@@ -81,9 +85,9 @@ gem install inspec
 gem install rbvmomi
 ```
 
-# VSphere API Explorer
+# vSphere API Explorer
 
-You can inspect the VSphere API via `/mob` on your ESX server.
+You can inspect the vSphere API via `/mob` on your ESXi server.
 
 ## License
 
