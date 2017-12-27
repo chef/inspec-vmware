@@ -9,7 +9,7 @@ class VmWareHostVswitch < Inspec.resource(1)
   "
 
   example "
-    describe host_vswitch(datacenter: 'ha-datacenter', host: 'localhost', vswitch: 'vSwitch0') do
+    describe vmhost_vswitch(datacenter: 'ha-datacenter', host: 'localhost', vswitch: 'vSwitch0') do
       its('forgedTransmits') { should be false }
     end
   "

@@ -9,7 +9,7 @@ class VmWareHostAcceptance < Inspec.resource(1)
   "
 
   example "
-    describe host_acceptance(datacenter: 'ha-datacenter', host: 'localhost') do
+    describe vmhost_acceptance(datacenter: 'ha-datacenter', host: 'localhost') do
       its('viblevel') { should eq 'partner' }
     end
   "

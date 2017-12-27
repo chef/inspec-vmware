@@ -10,7 +10,7 @@ class VmWareVmDevice < Inspec.resource(1)
 
   example "
     describe vm_device(datacenter: 'ha-datacenter', vm: 'vm001', device: 'Floppy') do
-      its('connected') { should eq 'false' }
+      its('connected') { should cmp 'false' }
     end
   "
 

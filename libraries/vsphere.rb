@@ -13,8 +13,8 @@ class ESXInfo < Inspec.resource(1)
       title "This control iterates over each vm in all datacenters and ensure `softPowerOff` is set to false"
       vsphere.datacenters.each { |dc|
         dc.vms.each { |vm|
-          describe vmware_vm_advancedsetting({datacenter: dc.name, vm: vm.name}) do
-            its("softPowerOff") { should cmp false }
+          describe vm_advancedsetting({datacenter: dc.name, vm: vm.name}) do
+            its("softPowerOff") { should cmp 'false' }
           end
         }
       }
