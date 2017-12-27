@@ -10,7 +10,7 @@ class VmWareHostFirewall < Inspec.resource(1)
 
   example "
     describe vmhost_firewall(datacenter: 'ha-datacenter', host: 'localhost', firewall_rule: 'DHCPv6') do
-      its('all_ip') { should eq false }
+      its('all_ip') { should cmp false }
     end
   "
 

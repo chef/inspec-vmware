@@ -9,8 +9,8 @@ class VmWareConfig < Inspec.resource(1)
   "
 
   example "
-    describe vmware_vm_advancedsetting(datacenter: 'ha-datacenter', vm: 'vm001') do
-      its('softPowerOff') { should eq 'false' }
+    describe vm_advancedsetting(datacenter: 'ha-datacenter', vm: 'vm001') do
+      its('softPowerOff') { should cmp 'false' }
     end
   "
 
@@ -24,7 +24,7 @@ class VmWareConfig < Inspec.resource(1)
   end
 
   def to_s
-    "vmware_vm_advancedsetting DC: #{@opts[:datacenter]} VM: #{@opts[:vm]}"
+    "vm_advancedsetting DC: #{@opts[:datacenter]} VM: #{@opts[:vm]}"
   end
 
   private

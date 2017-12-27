@@ -9,8 +9,8 @@ class VmWareHostAdvancedSetting < Inspec.resource(1)
   "
 
   example "
-    describe host_advancedsetting(datacenter: 'ha-datacenter', host: 'localhost') do
-      its('softPowerOff') { should eq 'false' }
+    describe vmhost_advancedsetting(datacenter: 'ha-datacenter', host: 'localhost') do
+      its('softPowerOff') { should cmp 'false' }
     end
   "
 

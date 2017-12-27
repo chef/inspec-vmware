@@ -9,7 +9,7 @@ class VmWareHostBuildnumber < Inspec.resource(1)
   "
 
   example "
-    describe host_buildnumber(datacenter: 'ha-datacenter', host: 'localhost') do
+    describe vmhost_buildnumber(datacenter: 'ha-datacenter', host: 'localhost') do
       its('build') { should eq '4192238' }
     end
   "
