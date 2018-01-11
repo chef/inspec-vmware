@@ -19,8 +19,14 @@ class VmWareHostAdvancedSetting < Inspec.resource(1)
     @opts = opts
   end
 
-  def method_missing(name) # rubocop:disable Style/MethodMissing
-    advancedsetting[name.to_s]
+  def method_missing(*keys) # rubocop:disable Style/MethodMissing
+    if keys.is_a?(Array)
+      keys.shift if keys[0] == :[]
+      key = keys.first
+    else
+      key = keys
+    end
+    advancedsetting[key.to_s]
   end
 
   private
