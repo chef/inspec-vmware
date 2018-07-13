@@ -1,8 +1,8 @@
-name: inspec-powercli
-title: InSpec PowerCLI
-maintainer: The Authors
-copyright: The Authors
-copyright_email: you@example.com
+name: inspec-vmware
+title: InSpec VMware
+maintainer: Chef Software Inc.
+copyright: Chef Software Inc.
+copyright_email: support@chef.io
 license: Apache-2.0
-summary: An InSpec Compliance Profile
-version: 0.1.1
+summary: Allows users to audit VMware platforms
+version: 1.0.0
