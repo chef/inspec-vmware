@@ -2,12 +2,26 @@
 
 This repository contains a collection of InSpec resources used to interact with the VMware platform.
 
+## Using this Resource Pack
+
+In order to use the resources in this resource pack you must declare the dependency in your InSpec profile.
+
+Example:
+
+```yaml
+depends:
+  - name: inspec-vmware
+    git: git@github.com:inspec/inspec-vmware.git
+```
+
 ## Using the VMware Target
+
+After defining a dependency on `inspec-vmware` in `your_profile` you are ready to use these resources with the `vmware://` target.
 
 ### Via Arguments
 
 ```shell
-~$ inspec exec inspec-vmware -t vmware://USERNAME@VISERVER --password MY_PASSWORD
+~$ inspec exec your_profile -t vmware://USERNAME@VISERVER --password MY_PASSWORD
 ```
 
 ### Via Environment Variables
