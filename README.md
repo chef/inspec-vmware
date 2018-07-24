@@ -7,7 +7,7 @@ This repository contains a collection of InSpec resources used to interact with 
 ### Via Arguments
 
 ```shell
-~$ inspec exec inspec-powercli -t vmware://USERNAME@VISERVER --password MY_PASSWORD
+~$ inspec exec inspec-vmware -t vmware://USERNAME@VISERVER --password MY_PASSWORD
 ```
 
 ### Via Environment Variables
@@ -16,13 +16,13 @@ This repository contains a collection of InSpec resources used to interact with 
 ~$ export VISERVER=10.0.0.10
 ~$ export VISERVER_USERNAME=demouser
 ~$ export VISERVER_PASSWORD=s0m3t1ngs3cuRe
-~$ inspec exec inspec-powercli -t vmware://
+~$ inspec exec inspec-vmware -t vmware://
 ```
 
 ### Via the InSpec Shell
 
 ```shell
-~$ inspec shell -t vmware://USERNAME@VISERVER --password MY_PASSWORD --depends ./inspec-powercli
+~$ inspec shell -t vmware://USERNAME@VISERVER --password MY_PASSWORD --depends ./inspec-vmware
 ```
 
 ## Pre-Requisites
